@@ -125,7 +125,7 @@ if __name__ == '__main__':
     cnn_model = HarmonicClassifierCNN(sequence_length=50) 
 
     # --- 4. Visualization of Results (Key POC Demonstration) ---
-    
+
     plt.style.use('ggplot')
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8))
 
@@ -148,6 +148,24 @@ if __name__ == '__main__':
     ax2.grid(True)
 
     fig.tight_layout(pad=3.0)
+    plt.show()
+
+    # --- 5. Simulated Model Prediction and Evaluation Visualization ---
+    # (This step visualizes how model predictions could align with actual data.)
+
+    # Simulate a small time-series prediction example
+    y_true = np.sin(np.linspace(0, 2 * np.pi, 100))               # Actual waveform
+    y_pred = y_true + np.random.normal(0, 0.05, size=len(y_true))  # Simulated noisy prediction
+
+    plt.figure(figsize=(8, 4))
+    plt.plot(y_true, label="Actual", linewidth=2)
+    plt.plot(y_pred, label="Predicted", linestyle='--')
+    plt.title("Predicted vs Actual Harmonic Levels")
+    plt.xlabel("Time Step")
+    plt.ylabel("Signal Magnitude")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
     plt.show()
 
     print("\n--- POC Complete. Check the plots for FFT visualization ---")
